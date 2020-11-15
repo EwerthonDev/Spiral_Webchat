@@ -153,6 +153,16 @@
         components: {
             AppLayout,
         },
+        data () {
+            return {
+                contatos: []
+            }
+        },
+        mounted () {
+            axios.get('api/contatos').then(response => {
+                console.log(response)
+            })
+        }
     }
 </script>
 

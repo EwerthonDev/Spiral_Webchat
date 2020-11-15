@@ -3568,6 +3568,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {
+    return {
+      contatos: []
+    };
+  },
+  mounted: function mounted() {
+    axios.get('api/contatos').then(function (response) {
+      console.log(response);
+    });
   }
 });
 
