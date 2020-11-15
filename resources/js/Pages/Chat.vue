@@ -12,57 +12,11 @@
                     <!-- Listagem de Contatos -->
                     <div class="w-3/12 bg-gray-200 bg-opacity-25 border-r border-gray-200 overflow-y-scroll">
                         <ul>
-                            <li class="p-6 text-lg text-gray-600 leading-7 font-semibold border-b border-gray-200 hover:bg-opacity-50 hover:cursor-pointer hover:bg-gray-200">
+                            <li 
+                                v-for="contato in contatos" :key="contato.id"
+                                class="p-6 text-lg text-gray-600 leading-7 font-semibold border-b border-gray-200 hover:bg-opacity-50 hover:cursor-pointer hover:bg-gray-200">
                                 <p class="flex items-center">
-                                    Gaby Boiolona Mi Amore
-                                    <span class="ml-2 w-2 h-2 bg-green-500 rounded-full"></span>
-                                </p>
-                            </li>
-                            <li class="p-6 text-lg text-gray-600 leading-7 font-semibold border-b border-gray-200 hover:bg-opacity-50 hover:cursor-pointer hover:bg-gray-200">
-                                <p class="flex items-center">
-                                    Filipe Bega Deus Grego
-                                    <span class="ml-2 w-2 h-2 bg-green-500 rounded-full"></span>
-                                </p>
-                            </li>
-                            <li class="p-6 text-lg text-gray-600 leading-7 font-semibold border-b border-gray-200 hover:bg-opacity-50 hover:cursor-pointer hover:bg-gray-200">
-                                <p class="flex items-center">
-                                    Sabrinão
-                                    <span class="ml-2 w-2 h-2 bg-green-500 rounded-full"></span>
-                                </p>
-                            </li>
-                            <li class="p-6 text-lg text-gray-600 leading-7 font-semibold border-b border-gray-200 hover:bg-opacity-50 hover:cursor-pointer hover:bg-gray-200">
-                                <p class="flex items-center">
-                                    Vulgo FK
-                                    <span class="ml-2 w-2 h-2 bg-green-500 rounded-full"></span>
-                                </p>
-                            </li>
-                            <li class="p-6 text-lg text-gray-600 leading-7 font-semibold border-b border-gray-200 hover:bg-opacity-50 hover:cursor-pointer hover:bg-gray-200">
-                                <p class="flex items-center">
-                                    MC Poze
-                                    <span class="ml-2 w-2 h-2 bg-green-500 rounded-full"></span>
-                                </p>
-                            </li>
-                            <li class="p-6 text-lg text-gray-600 leading-7 font-semibold border-b border-gray-200 hover:bg-opacity-50 hover:cursor-pointer hover:bg-gray-200">
-                                <p class="flex items-center">
-                                    Blumer
-                                    <span class="ml-2 w-2 h-2 bg-green-500 rounded-full"></span>
-                                </p>
-                            </li>
-                            <li class="p-6 text-lg text-gray-600 leading-7 font-semibold border-b border-gray-200 hover:bg-opacity-50 hover:cursor-pointer hover:bg-gray-200">
-                                <p class="flex items-center">
-                                    KKKKKKauan
-                                    <span class="ml-2 w-2 h-2 bg-green-500 rounded-full"></span>
-                                </p>
-                            </li>
-                            <li class="p-6 text-lg text-gray-600 leading-7 font-semibold border-b border-gray-200 hover:bg-opacity-50 hover:cursor-pointer hover:bg-gray-200">
-                                <p class="flex items-center">
-                                    Veronicão
-                                    <span class="ml-2 w-2 h-2 bg-green-500 rounded-full"></span>
-                                </p>
-                            </li>
-                            <li class="p-6 text-lg text-gray-600 leading-7 font-semibold border-b border-gray-200 hover:bg-opacity-50 hover:cursor-pointer hover:bg-gray-200">
-                                <p class="flex items-center">
-                                    Samuka
+                                    {{ contato.name }}
                                     <span class="ml-2 w-2 h-2 bg-green-500 rounded-full"></span>
                                 </p>
                             </li>
@@ -160,7 +114,7 @@
         },
         mounted () {
             axios.get('api/contatos').then(response => {
-                console.log(response)
+                this.contatos = response.data.contatos
             })
         }
     }

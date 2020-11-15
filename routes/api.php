@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\ContatoController;
 use Illuminate\Http\Request;
+use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\Route;
 
 /*

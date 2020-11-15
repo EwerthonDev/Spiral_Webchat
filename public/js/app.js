@@ -3517,52 +3517,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3575,8 +3529,10 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
+    var _this = this;
+
     axios.get('api/contatos').then(function (response) {
-      console.log(response);
+      _this.contatos = response.data.contatos;
     });
   }
 });
@@ -26846,178 +26802,33 @@ var render = function() {
                     "w-3/12 bg-gray-200 bg-opacity-25 border-r border-gray-200 overflow-y-scroll"
                 },
                 [
-                  _c("ul", [
-                    _c(
-                      "li",
-                      {
-                        staticClass:
-                          "p-6 text-lg text-gray-600 leading-7 font-semibold border-b border-gray-200 hover:bg-opacity-50 hover:cursor-pointer hover:bg-gray-200"
-                      },
-                      [
-                        _c("p", { staticClass: "flex items-center" }, [
-                          _vm._v(
-                            "\n                                Gaby Boiolona Mi Amore\n                                "
-                          ),
-                          _c("span", {
-                            staticClass:
-                              "ml-2 w-2 h-2 bg-green-500 rounded-full"
-                          })
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "li",
-                      {
-                        staticClass:
-                          "p-6 text-lg text-gray-600 leading-7 font-semibold border-b border-gray-200 hover:bg-opacity-50 hover:cursor-pointer hover:bg-gray-200"
-                      },
-                      [
-                        _c("p", { staticClass: "flex items-center" }, [
-                          _vm._v(
-                            "\n                                Filipe Bega Deus Grego\n                                "
-                          ),
-                          _c("span", {
-                            staticClass:
-                              "ml-2 w-2 h-2 bg-green-500 rounded-full"
-                          })
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "li",
-                      {
-                        staticClass:
-                          "p-6 text-lg text-gray-600 leading-7 font-semibold border-b border-gray-200 hover:bg-opacity-50 hover:cursor-pointer hover:bg-gray-200"
-                      },
-                      [
-                        _c("p", { staticClass: "flex items-center" }, [
-                          _vm._v(
-                            "\n                                Sabrinão\n                                "
-                          ),
-                          _c("span", {
-                            staticClass:
-                              "ml-2 w-2 h-2 bg-green-500 rounded-full"
-                          })
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "li",
-                      {
-                        staticClass:
-                          "p-6 text-lg text-gray-600 leading-7 font-semibold border-b border-gray-200 hover:bg-opacity-50 hover:cursor-pointer hover:bg-gray-200"
-                      },
-                      [
-                        _c("p", { staticClass: "flex items-center" }, [
-                          _vm._v(
-                            "\n                                Vulgo FK\n                                "
-                          ),
-                          _c("span", {
-                            staticClass:
-                              "ml-2 w-2 h-2 bg-green-500 rounded-full"
-                          })
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "li",
-                      {
-                        staticClass:
-                          "p-6 text-lg text-gray-600 leading-7 font-semibold border-b border-gray-200 hover:bg-opacity-50 hover:cursor-pointer hover:bg-gray-200"
-                      },
-                      [
-                        _c("p", { staticClass: "flex items-center" }, [
-                          _vm._v(
-                            "\n                                MC Poze\n                                "
-                          ),
-                          _c("span", {
-                            staticClass:
-                              "ml-2 w-2 h-2 bg-green-500 rounded-full"
-                          })
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "li",
-                      {
-                        staticClass:
-                          "p-6 text-lg text-gray-600 leading-7 font-semibold border-b border-gray-200 hover:bg-opacity-50 hover:cursor-pointer hover:bg-gray-200"
-                      },
-                      [
-                        _c("p", { staticClass: "flex items-center" }, [
-                          _vm._v(
-                            "\n                                Blumer\n                                "
-                          ),
-                          _c("span", {
-                            staticClass:
-                              "ml-2 w-2 h-2 bg-green-500 rounded-full"
-                          })
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "li",
-                      {
-                        staticClass:
-                          "p-6 text-lg text-gray-600 leading-7 font-semibold border-b border-gray-200 hover:bg-opacity-50 hover:cursor-pointer hover:bg-gray-200"
-                      },
-                      [
-                        _c("p", { staticClass: "flex items-center" }, [
-                          _vm._v(
-                            "\n                                KKKKKKauan\n                                "
-                          ),
-                          _c("span", {
-                            staticClass:
-                              "ml-2 w-2 h-2 bg-green-500 rounded-full"
-                          })
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "li",
-                      {
-                        staticClass:
-                          "p-6 text-lg text-gray-600 leading-7 font-semibold border-b border-gray-200 hover:bg-opacity-50 hover:cursor-pointer hover:bg-gray-200"
-                      },
-                      [
-                        _c("p", { staticClass: "flex items-center" }, [
-                          _vm._v(
-                            "\n                                Veronicão\n                                "
-                          ),
-                          _c("span", {
-                            staticClass:
-                              "ml-2 w-2 h-2 bg-green-500 rounded-full"
-                          })
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "li",
-                      {
-                        staticClass:
-                          "p-6 text-lg text-gray-600 leading-7 font-semibold border-b border-gray-200 hover:bg-opacity-50 hover:cursor-pointer hover:bg-gray-200"
-                      },
-                      [
-                        _c("p", { staticClass: "flex items-center" }, [
-                          _vm._v(
-                            "\n                                Samuka\n                                "
-                          ),
-                          _c("span", {
-                            staticClass:
-                              "ml-2 w-2 h-2 bg-green-500 rounded-full"
-                          })
-                        ])
-                      ]
-                    )
-                  ])
+                  _c(
+                    "ul",
+                    _vm._l(_vm.contatos, function(contato) {
+                      return _c(
+                        "li",
+                        {
+                          key: contato.id,
+                          staticClass:
+                            "p-6 text-lg text-gray-600 leading-7 font-semibold border-b border-gray-200 hover:bg-opacity-50 hover:cursor-pointer hover:bg-gray-200"
+                        },
+                        [
+                          _c("p", { staticClass: "flex items-center" }, [
+                            _vm._v(
+                              "\n                                " +
+                                _vm._s(contato.name) +
+                                "\n                                "
+                            ),
+                            _c("span", {
+                              staticClass:
+                                "ml-2 w-2 h-2 bg-green-500 rounded-full"
+                            })
+                          ])
+                        ]
+                      )
+                    }),
+                    0
+                  )
                 ]
               ),
               _vm._v(" "),
