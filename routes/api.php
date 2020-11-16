@@ -23,5 +23,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/contatos', [ContatoController::class, 'index'])->name('contato');
+    Route::get('/contatos/{usuario}', [ContatoController::class, 'show'])->name('contato_ativo');
     Route::get('/mensagens/{usuario}', [MensagemController::class, 'listarMensagens'])->name('listar_mensagens');
 });

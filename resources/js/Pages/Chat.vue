@@ -15,6 +15,7 @@
                             <li 
                                 v-for="contato in contatos" :key="contato.id"
                                 @click="() => {CarregaMensagens(contato.id)}"
+                                :class="(contatoAtivo && contatoAtivo.id == contato.id) ? 'bg-gray-200 bg-opacity-50' : ''"
                                 class="p-6 text-lg text-gray-600 leading-7 font-semibold border-b border-gray-200 hover:bg-opacity-50 hover:cursor-pointer hover:bg-gray-200">
                                 <p class="flex items-center">
                                     {{ contato.name }}
@@ -30,18 +31,14 @@
                         <div class="w-full p-6 flex flex-col overflow-y-scroll">
                             <div 
                                 v-for="mensagem in mensagens" :key="mensagem.id"
-                                class="w-full mb-3 text-right">
-                                <p class="inline-block p-2 rounded-md minhaMensagem" style="max-width: 75%;">
+                                :class="(mensagem.de == $page.auth.usuario.id) ? 'text-right' : ''"
+                                class="w-full mb-3">
+                                <p 
+                                    :class="(mensagem.de == $page.auth.usuario.id) ? 'minhaMensagem' : 'mensagemParaMim'"
+                                    class="inline-block p-2 rounded-md" style="max-width: 75%;">
                                     {{ mensagem.conteudo }}
                                 </p>
-                                <span class="block mt-1 text-xs text-gray-500">{{ mensagem.created_at }}</span>
-                            </div>
-                        
-                            <div class="w-full mb-3">
-                                <p class="inline-block p-2 rounded-md mensagemParaMim" style="max-width: 75%;">
-                                    Oi!
-                                </p>
-                                <span class="block mt-1 text-xs text-gray-500">14/11/2020 17:44</span>
+                                <span class="block mt-1 text-xs text-gray-500">{{ mensagem.created_at | formatarData()}}</span>
                             </div>
                         </div>
                         <div class="w-full bg-gray-200 bg-opacity-25 p-6 border-t border-gray-200">
@@ -72,11 +69,16 @@
             return {
                 contatos: [],
                 mensagens: [],
+                contatoAtivo: {}
             }
         },
         methods: {
             CarregaMensagens: function(contatoId)
             {   
+                axios.get(`api/contatos/${contatoId}`).then(response => {
+                    this.contatoAtivo = response.data.contato
+                });
+
                 axios.get(`api/mensagens/${contatoId}`).then(response => {
                     this.mensagens = response.data.mensagens
                 });
@@ -93,11 +95,11 @@
 <style>
 .minhaMensagem
 {
-    @apply bg-indigo-300 bg-opacity-25;
+    @apply bg-gray-300 bg-opacity-25;
 }
 
 .mensagemParaMim
 {
-    @apply bg-gray-300 bg-opacity-25;
+    @apply bg-indigo-300 bg-opacity-25;
 }
 </style>

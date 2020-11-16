@@ -20,4 +20,11 @@ class ContatoController extends Controller
             'contatos' => $usuarios,
         ], Response::HTTP_OK);
     }
+
+    public function show(User $usuario)
+    {
+        return response()->json([
+            'contato' => $usuario,
+        ], Response::HTTP_OK);
+    }
 }
