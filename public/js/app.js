@@ -3478,45 +3478,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3525,14 +3486,24 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      contatos: []
+      contatos: [],
+      mensagens: []
     };
   },
+  methods: {
+    CarregaMensagens: function CarregaMensagens(contatoId) {
+      var _this = this;
+
+      axios.get("api/mensagens/".concat(contatoId)).then(function (response) {
+        _this.mensagens = response.data.mensagens;
+      });
+    }
+  },
   mounted: function mounted() {
-    var _this = this;
+    var _this2 = this;
 
     axios.get('api/contatos').then(function (response) {
-      _this.contatos = response.data.contatos;
+      _this2.contatos = response.data.contatos;
     });
   }
 });
@@ -26810,7 +26781,12 @@ var render = function() {
                         {
                           key: contato.id,
                           staticClass:
-                            "p-6 text-lg text-gray-600 leading-7 font-semibold border-b border-gray-200 hover:bg-opacity-50 hover:cursor-pointer hover:bg-gray-200"
+                            "p-6 text-lg text-gray-600 leading-7 font-semibold border-b border-gray-200 hover:bg-opacity-50 hover:cursor-pointer hover:bg-gray-200",
+                          on: {
+                            click: function() {
+                              _vm.CarregaMensagens(contato.id)
+                            }
+                          }
                         },
                         [
                           _c("p", { staticClass: "flex items-center" }, [
@@ -26842,159 +26818,40 @@ var render = function() {
                       staticClass: "w-full p-6 flex flex-col overflow-y-scroll"
                     },
                     [
-                      _c("div", { staticClass: "w-full mb-3 text-right" }, [
-                        _c(
-                          "p",
+                      _vm._l(_vm.mensagens, function(mensagem) {
+                        return _c(
+                          "div",
                           {
-                            staticClass:
-                              "inline-block p-2 rounded-md minhaMensagem",
-                            staticStyle: { "max-width": "75%" }
+                            key: mensagem.id,
+                            staticClass: "w-full mb-3 text-right"
                           },
                           [
-                            _vm._v(
-                              "\n                                Olá!\n                            "
+                            _c(
+                              "p",
+                              {
+                                staticClass:
+                                  "inline-block p-2 rounded-md minhaMensagem",
+                                staticStyle: { "max-width": "75%" }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                " +
+                                    _vm._s(mensagem.conteudo) +
+                                    "\n                            "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "span",
+                              {
+                                staticClass: "block mt-1 text-xs text-gray-500"
+                              },
+                              [_vm._v(_vm._s(mensagem.created_at))]
                             )
                           ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "span",
-                          { staticClass: "block mt-1 text-xs text-gray-500" },
-                          [_vm._v("14/11/2020 17:44")]
                         )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "w-full mb-3" }, [
-                        _c(
-                          "p",
-                          {
-                            staticClass:
-                              "inline-block p-2 rounded-md mensagemParaMim",
-                            staticStyle: { "max-width": "75%" }
-                          },
-                          [
-                            _vm._v(
-                              "\n                                Oi!\n                            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "span",
-                          { staticClass: "block mt-1 text-xs text-gray-500" },
-                          [_vm._v("14/11/2020 17:44")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "w-full mb-3 text-right" }, [
-                        _c(
-                          "p",
-                          {
-                            staticClass:
-                              "inline-block p-2 rounded-md minhaMensagem",
-                            staticStyle: { "max-width": "75%" }
-                          },
-                          [
-                            _vm._v(
-                              "\n                                Olá!\n                            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "span",
-                          { staticClass: "block mt-1 text-xs text-gray-500" },
-                          [_vm._v("14/11/2020 17:44")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "w-full mb-3" }, [
-                        _c(
-                          "p",
-                          {
-                            staticClass:
-                              "inline-block p-2 rounded-md mensagemParaMim",
-                            staticStyle: { "max-width": "75%" }
-                          },
-                          [
-                            _vm._v(
-                              "\n                                Oi!\n                            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "span",
-                          { staticClass: "block mt-1 text-xs text-gray-500" },
-                          [_vm._v("14/11/2020 17:44")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "w-full mb-3 text-right" }, [
-                        _c(
-                          "p",
-                          {
-                            staticClass:
-                              "inline-block p-2 rounded-md minhaMensagem",
-                            staticStyle: { "max-width": "75%" }
-                          },
-                          [
-                            _vm._v(
-                              "\n                                Olá!\n                            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "span",
-                          { staticClass: "block mt-1 text-xs text-gray-500" },
-                          [_vm._v("14/11/2020 17:44")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "w-full mb-3" }, [
-                        _c(
-                          "p",
-                          {
-                            staticClass:
-                              "inline-block p-2 rounded-md mensagemParaMim",
-                            staticStyle: { "max-width": "75%" }
-                          },
-                          [
-                            _vm._v(
-                              "\n                                Oi!\n                            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "span",
-                          { staticClass: "block mt-1 text-xs text-gray-500" },
-                          [_vm._v("14/11/2020 17:44")]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "w-full mb-3 text-right" }, [
-                        _c(
-                          "p",
-                          {
-                            staticClass:
-                              "inline-block p-2 rounded-md minhaMensagem",
-                            staticStyle: { "max-width": "75%" }
-                          },
-                          [
-                            _vm._v(
-                              "\n                                Olá!\n                            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "span",
-                          { staticClass: "block mt-1 text-xs text-gray-500" },
-                          [_vm._v("14/11/2020 17:44")]
-                        )
-                      ]),
+                      }),
                       _vm._v(" "),
                       _c("div", { staticClass: "w-full mb-3" }, [
                         _c(
@@ -27017,7 +26874,8 @@ var render = function() {
                           [_vm._v("14/11/2020 17:44")]
                         )
                       ])
-                    ]
+                    ],
+                    2
                   ),
                   _vm._v(" "),
                   _c(

@@ -14,6 +14,7 @@
                         <ul>
                             <li 
                                 v-for="contato in contatos" :key="contato.id"
+                                @click="() => {CarregaMensagens(contato.id)}"
                                 class="p-6 text-lg text-gray-600 leading-7 font-semibold border-b border-gray-200 hover:bg-opacity-50 hover:cursor-pointer hover:bg-gray-200">
                                 <p class="flex items-center">
                                     {{ contato.name }}
@@ -27,53 +28,13 @@
                     <div class="w-9/12 flex flex-col justify-between">
                         <!-- Mensagens -->
                         <div class="w-full p-6 flex flex-col overflow-y-scroll">
-                            <div class="w-full mb-3 text-right">
+                            <div 
+                                v-for="mensagem in mensagens" :key="mensagem.id"
+                                class="w-full mb-3 text-right">
                                 <p class="inline-block p-2 rounded-md minhaMensagem" style="max-width: 75%;">
-                                    Olá!
+                                    {{ mensagem.conteudo }}
                                 </p>
-                                <span class="block mt-1 text-xs text-gray-500">14/11/2020 17:44</span>
-                            </div>
-                        
-                            <div class="w-full mb-3">
-                                <p class="inline-block p-2 rounded-md mensagemParaMim" style="max-width: 75%;">
-                                    Oi!
-                                </p>
-                                <span class="block mt-1 text-xs text-gray-500">14/11/2020 17:44</span>
-                            </div>
-
-                            <div class="w-full mb-3 text-right">
-                                <p class="inline-block p-2 rounded-md minhaMensagem" style="max-width: 75%;">
-                                    Olá!
-                                </p>
-                                <span class="block mt-1 text-xs text-gray-500">14/11/2020 17:44</span>
-                            </div>
-                        
-                            <div class="w-full mb-3">
-                                <p class="inline-block p-2 rounded-md mensagemParaMim" style="max-width: 75%;">
-                                    Oi!
-                                </p>
-                                <span class="block mt-1 text-xs text-gray-500">14/11/2020 17:44</span>
-                            </div>
-
-                            <div class="w-full mb-3 text-right">
-                                <p class="inline-block p-2 rounded-md minhaMensagem" style="max-width: 75%;">
-                                    Olá!
-                                </p>
-                                <span class="block mt-1 text-xs text-gray-500">14/11/2020 17:44</span>
-                            </div>
-                        
-                            <div class="w-full mb-3">
-                                <p class="inline-block p-2 rounded-md mensagemParaMim" style="max-width: 75%;">
-                                    Oi!
-                                </p>
-                                <span class="block mt-1 text-xs text-gray-500">14/11/2020 17:44</span>
-                            </div>
-
-                            <div class="w-full mb-3 text-right">
-                                <p class="inline-block p-2 rounded-md minhaMensagem" style="max-width: 75%;">
-                                    Olá!
-                                </p>
-                                <span class="block mt-1 text-xs text-gray-500">14/11/2020 17:44</span>
+                                <span class="block mt-1 text-xs text-gray-500">{{ mensagem.created_at }}</span>
                             </div>
                         
                             <div class="w-full mb-3">
@@ -109,7 +70,16 @@
         },
         data () {
             return {
-                contatos: []
+                contatos: [],
+                mensagens: [],
+            }
+        },
+        methods: {
+            CarregaMensagens: function(contatoId)
+            {   
+                axios.get(`api/mensagens/${contatoId}`).then(response => {
+                    this.mensagens = response.data.mensagens
+                });
             }
         },
         mounted () {

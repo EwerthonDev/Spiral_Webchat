@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\ContatoController;
+use App\Http\Controllers\Api\MensagemController;
 use Illuminate\Http\Request;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\Route;
@@ -22,4 +23,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/contatos', [ContatoController::class, 'index'])->name('contato');
+    Route::get('/mensagens/{usuario}', [MensagemController::class, 'listarMensagens'])->name('listar_mensagens');
 });
