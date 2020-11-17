@@ -27,4 +27,13 @@ class ContatoController extends Controller
             'contato' => $usuario,
         ], Response::HTTP_OK);
     }
+
+    public function eu()
+    {
+        $usuarioLogado = Auth::user()    ;
+
+        return response()->json([
+            'usuarioLogado' => $usuarioLogado
+        ], Response::HTTP_OK);
+    }
 }

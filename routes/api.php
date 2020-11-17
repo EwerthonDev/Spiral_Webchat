@@ -22,7 +22,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/contato/eu', [ContatoController::class, 'eu'])->name('eu');
+    Route::get('/contato/{usuarioId}', [ContatoController::class, 'envioId'])->name('envioId');
     Route::get('/contatos', [ContatoController::class, 'index'])->name('contato');
     Route::get('/contatos/{usuario}', [ContatoController::class, 'show'])->name('contato_ativo');
     Route::get('/mensagens/{usuario}', [MensagemController::class, 'listarMensagens'])->name('listar_mensagens');
+    Route::post('/mensagens/store', [MensagemController::class, 'store'])->name('salvar_mensagem');
 });

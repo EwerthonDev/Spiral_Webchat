@@ -6,6 +6,7 @@ import { InertiaApp } from '@inertiajs/inertia-vue';
 import { InertiaForm } from 'laravel-jetstream';
 import PortalVue from 'portal-vue';
 import moment from 'moment';
+import Store from './store';
 
 moment.locale("pt-br");
 
@@ -14,6 +15,8 @@ Vue.filter('formatarData', function (valor){
         return moment(valor).format('DD/MM/YYYY HH:mm')
     }
 });
+
+Store.dispatch('contatoStateAction');
 
 Vue.mixin({ methods: { route } });
 Vue.use(InertiaApp);

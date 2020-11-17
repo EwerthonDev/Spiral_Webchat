@@ -58,8 +58,12 @@ class MensagemController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        $mensagem = new Mensagem();
+        $mensagem->de = Auth::user()->id;
+        $mensagem->para = $request->para;
+        $mensagem->conteudo = filter_var($request->conteudo, FILTER_SANITIZE_STRIPPED);
+        $mensagem->save();
     }
 
     /**

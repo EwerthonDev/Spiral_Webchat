@@ -32,7 +32,7 @@
                             <div 
                                 v-for="mensagem in mensagens" :key="mensagem.id"
                                 :class="(mensagem.de == $page.auth.usuario.id) ? 'text-right' : ''"
-                                class="w-full mb-3">
+                                class="w-full mb-3 mensagem">
                                 <p 
                                     :class="(mensagem.de == $page.auth.usuario.id) ? 'minhaMensagem' : 'mensagemParaMim'"
                                     class="inline-block p-2 rounded-md" style="max-width: 75%;">
@@ -41,10 +41,12 @@
                                 <span class="block mt-1 text-xs text-gray-500">{{ mensagem.created_at | formatarData()}}</span>
                             </div>
                         </div>
-                        <div class="w-full bg-gray-200 bg-opacity-25 p-6 border-t border-gray-200">
-                            <form>
+
+                        <!-- Formulário -->
+                        <div v-if="contatoAtivo" class="w-full bg-gray-200 bg-opacity-25 p-6 border-t border-gray-200">
+                            <form v-on:submit.prevent="enviarMensagem">
                                 <div class="flex rounded-md overflow-hidden border border-gray-300">
-                                    <input type="text" class="flex-1 px-4 py-2 text-sm focus:outline-none">
+                                    <input v-model="mensagem" type="text" class="flex-1 px-4 py-2 text-sm focus:outline-none">
                                     <button type="submit" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2">Enviar</button>
                                 </div>
                             </form>
@@ -59,7 +61,7 @@
 
 <script>
     import AppLayout from '@/Layouts/AppLayout'
-    import Welcome from '@/Jetstream/Welcome'
+    import Store from '../store';
 
     export default {
         components: {
@@ -69,20 +71,59 @@
             return {
                 contatos: [],
                 mensagens: [],
-                contatoAtivo: {}
+                contatoAtivo: null,
+                mensagem: ''
+            }
+        },
+        computed: {
+            contato() {
+                return Store.state.contato
             }
         },
         methods: {
-            CarregaMensagens: function(contatoId)
+            scrollParaBaixo: function() 
+            {
+
+                if(this.mensagens.length) {
+                    document.querySelectorAll('.mensagem:last-child')[0].scrollIntoView();
+                }
+            },
+            CarregaMensagens: async function(contatoId)
             {   
+
                 axios.get(`api/contatos/${contatoId}`).then(response => {
                     this.contatoAtivo = response.data.contato
-                });
+                })
 
-                axios.get(`api/mensagens/${contatoId}`).then(response => {
+                await axios.get(`api/mensagens/${contatoId}`).then(response => {
                     this.mensagens = response.data.mensagens
-                });
+                })
+
+                this.scrollParaBaixo()
+                
+            },
+            enviarMensagem: async function() 
+            {
+
+                await axios.post(`api/mensagens/store`, {
+                    'conteudo': this.mensagem,
+                    'para': this.contatoAtivo.id
+                }).then(response => {
+
+                    this.mensagens.push({
+                        'de': this.contato.id,
+                        'para': this.contatoAtivo.id,
+                        'conteudo': this.mensagem,
+                        'created_at': new Date().toISOString(),
+                        'updated_at': new Date().toISOString()
+                    })
+
+                    this.mensagem = '';
+                }) 
+
+                this.scrollParaBaixo()
             }
+
         },
         mounted () {
             axios.get('api/contatos').then(response => {
