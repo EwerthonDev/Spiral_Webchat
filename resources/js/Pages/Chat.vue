@@ -129,6 +129,16 @@
             axios.get('api/contatos').then(response => {
                 this.contatos = response.data.contatos
             })
+
+            Echo.private(`user.${this.contato.id}`).listen('.EnviarMensagem', (e) => {
+                if(this.contatoAtivo && this.contatoAtivo.id === e.mensagem.de) {
+                    this.mensagens.push(e.mensagem)
+                    this.scrollParaBaixo
+                } else {
+
+                }
+                console.log(e);
+            })
         }
     }
 </script>

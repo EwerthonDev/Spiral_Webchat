@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Events\Chat\EnviarMensagem;
 use App\Http\Controllers\Controller;
 use App\Models\Mensagem;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Event;
 use Symfony\Component\HttpFoundation\Response;
 
 class MensagemController extends Controller
@@ -64,6 +66,8 @@ class MensagemController extends Controller
         $mensagem->para = $request->para;
         $mensagem->conteudo = filter_var($request->conteudo, FILTER_SANITIZE_STRIPPED);
         $mensagem->save();
+
+        Event::dispatch(new EnviarMensagem($mensagem, $request->para));
     }
 
     /**
