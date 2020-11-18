@@ -1,4 +1,4 @@
-# Bem Vindos Ao Webchat Spiral!
+# Bem Vindos Ao Spiral Webchat!
 
 ![Spiral Webchat imagem](https://i.ibb.co/1v1HRF0/spiral-webchat7.png)
 
