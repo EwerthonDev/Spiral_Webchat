@@ -1,7 +1,7 @@
 # Bem Vindos Ao Spiral Webchat!
-
+<center>
 <img src="https://www.flaticon.com/svg/static/icons/svg/137/137099.svg" height="200px" width="200px">
-
+</center>
 Este é um projeto voltado ao aprendizado, se trata de um webchat que será feito com: 
 - **Laravel 8**
 - **Vue.js**
