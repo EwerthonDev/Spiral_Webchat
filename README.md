@@ -12,7 +12,7 @@ Este é um projeto voltado ao aprendizado, se trata de um webchat que será feit
 
 ### Vídeo demonstrativo a baixo
 
-https://streamable.com/4rcu6m
+https://streamable.com/mo4nq5
 
 Pode acompanhar o projeto e inclusive contribuir para o mesmo!
 
