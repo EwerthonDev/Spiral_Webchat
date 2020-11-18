@@ -10,7 +10,7 @@ Este é um projeto voltado ao aprendizado, se trata de um webchat que será feit
 - **Laravel Echo**
 - **TailwindCSS**
 
-   ![Alt Text](https://media.giphy.com/media/0wBtmbfKW3Hp2lPUSr/giphy.gif)
+   ![Alt Text](https://streamable.com/4rcu6m)
 
 
 Pode acompanhar o projeto e inclusive contribuir para o mesmo!
