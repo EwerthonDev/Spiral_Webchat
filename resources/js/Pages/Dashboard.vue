@@ -1,8 +1,8 @@
 <template>
     <app-layout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Dashboard 123
+            <h2 class="font-semibold text-xl text-white leading-tight">
+                Dashboard
             </h2>
         </template>
 

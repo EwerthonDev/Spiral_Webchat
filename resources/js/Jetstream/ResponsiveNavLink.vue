@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="bg-gray-900">
         <button :class="classes" class="w-full text-left" v-if="as == 'button'">
             <slot></slot>
         </button>
