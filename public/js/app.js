@@ -2776,6 +2776,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -53592,7 +53593,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("li", [_vm._v("Vuex")]),
         _vm._v(" "),
-        _c("li", [_vm._v("Vuex-Persistedstate")])
+        _c("li", [_vm._v("Vuex-Persistedstate")]),
+        _vm._v(" "),
+        _c("li", [_vm._v("TailwindCSS")])
       ])
     ])
   },

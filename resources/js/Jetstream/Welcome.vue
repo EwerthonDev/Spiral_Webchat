@@ -19,6 +19,7 @@
                     <li>Vue.js</li>
                     <li>Vuex</li>
                     <li>Vuex-Persistedstate</li>
+                    <li>TailwindCSS</li>
                 </ul>
             </div>
         </div>
