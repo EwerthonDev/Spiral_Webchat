@@ -19,7 +19,7 @@
                                 class="p-6 text-lg text-gray-600 leading-7 font-semibold border-b border-gray-200 hover:bg-opacity-50 hover:cursor-pointer hover:bg-gray-200">
                                 <p class="flex items-center">
                                     {{ contato.name }}
-                                    <span class="ml-2 w-2 h-2 bg-green-500 rounded-full"></span>
+                                    <span v-if="contato.notificacao" class="ml-2 w-2 h-2 bg-green-500 rounded-full"></span>
                                 </p>
                             </li>
                         </ul>
@@ -60,6 +60,7 @@
 </template>
 
 <script>
+    import Vue from 'vue'
     import AppLayout from '@/Layouts/AppLayout'
     import Store from '../store';
 
@@ -99,6 +100,16 @@
                     this.mensagens = response.data.mensagens
                 })
 
+                const contato = this.contatos.filter((contato) => {
+                        if (contato.id === contatoId) {
+                            return contato
+                        }
+                })
+
+                if (contato) {
+                    Vue.set(contato[0], 'notificacao', false)
+                }
+
                 this.scrollParaBaixo()
                 
             },
@@ -130,14 +141,21 @@
                 this.contatos = response.data.contatos
             })
 
-            Echo.private(`user.${this.contato.id}`).listen('.EnviarMensagem', (e) => {
+            Echo.private(`user.${this.contato.id}`).listen('.EnviarMensagem', async (e) => {
                 if(this.contatoAtivo && this.contatoAtivo.id === e.mensagem.de) {
-                    this.mensagens.push(e.mensagem)
+                    await this.mensagens.push(e.mensagem)
                     this.scrollParaBaixo
                 } else {
+                    const contato = this.contatos.filter((contato) => {
+                        if (contato.id === e.mensagem.de) {
+                            return contato
+                        }
+                    })
 
+                    if (contato) {
+                        Vue.set(contato[0], 'notificacao', true)
+                    }
                 }
-                console.log(e);
             })
         }
     }

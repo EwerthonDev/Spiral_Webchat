@@ -3431,8 +3431,10 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store */ "./resources/js/store.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.vue");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store */ "./resources/js/store.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -3502,9 +3504,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_1__["default"]
+    AppLayout: _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   data: function data() {
     return {
@@ -3516,7 +3519,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   computed: {
     contato: function contato() {
-      return _store__WEBPACK_IMPORTED_MODULE_2__["default"].state.contato;
+      return _store__WEBPACK_IMPORTED_MODULE_3__["default"].state.contato;
     }
   },
   methods: {
@@ -3529,6 +3532,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _CarregaMensagens = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(contatoId) {
         var _this = this;
 
+        var contato;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -3542,9 +3546,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 });
 
               case 3:
+                contato = this.contatos.filter(function (contato) {
+                  if (contato.id === contatoId) {
+                    return contato;
+                  }
+                });
+
+                if (contato) {
+                  vue__WEBPACK_IMPORTED_MODULE_1___default.a.set(contato[0], 'notificacao', false);
+                }
+
                 this.scrollParaBaixo();
 
-              case 4:
+              case 6:
               case "end":
                 return _context.stop();
             }
@@ -3606,15 +3620,49 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     axios.get('api/contatos').then(function (response) {
       _this3.contatos = response.data.contatos;
     });
-    Echo["private"]("user.".concat(this.contato.id)).listen('.EnviarMensagem', function (e) {
-      if (_this3.contatoAtivo && _this3.contatoAtivo.id === e.mensagem.de) {
-        _this3.mensagens.push(e.mensagem);
+    Echo["private"]("user.".concat(this.contato.id)).listen('.EnviarMensagem', /*#__PURE__*/function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(e) {
+        var contato;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                if (!(_this3.contatoAtivo && _this3.contatoAtivo.id === e.mensagem.de)) {
+                  _context3.next = 6;
+                  break;
+                }
 
-        _this3.scrollParaBaixo;
-      } else {}
+                _context3.next = 3;
+                return _this3.mensagens.push(e.mensagem);
 
-      console.log(e);
-    });
+              case 3:
+                _this3.scrollParaBaixo;
+                _context3.next = 8;
+                break;
+
+              case 6:
+                contato = _this3.contatos.filter(function (contato) {
+                  if (contato.id === e.mensagem.de) {
+                    return contato;
+                  }
+                });
+
+                if (contato) {
+                  vue__WEBPACK_IMPORTED_MODULE_1___default.a.set(contato[0], 'notificacao', true);
+                }
+
+              case 8:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }));
+
+      return function (_x2) {
+        return _ref.apply(this, arguments);
+      };
+    }());
   }
 });
 
@@ -55357,10 +55405,12 @@ var render = function() {
                                 _vm._s(contato.name) +
                                 "\n                                "
                             ),
-                            _c("span", {
-                              staticClass:
-                                "ml-2 w-2 h-2 bg-green-500 rounded-full"
-                            })
+                            contato.notificacao
+                              ? _c("span", {
+                                  staticClass:
+                                    "ml-2 w-2 h-2 bg-green-500 rounded-full"
+                                })
+                              : _vm._e()
                           ])
                         ]
                       )
