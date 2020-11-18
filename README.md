@@ -1,6 +1,6 @@
 # Bem Vindos Ao Spiral Webchat!
 
-![Spiral Webchat imagem](https://i.ibb.co/1v1HRF0/spiral-webchat7.png)
+![Spiral Webchat imagem](https://i.ibb.co/1KqnD6N/spiral-webchat-def.jpg)
 
 Este é um projeto voltado ao aprendizado, se trata de um webchat que será feito com: 
 - **Laravel 8**
