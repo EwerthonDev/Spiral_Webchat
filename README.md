@@ -10,8 +10,9 @@ Este é um projeto voltado ao aprendizado, se trata de um webchat que será feit
 - **Laravel Echo**
 - **TailwindCSS**
 
-   ![Alt Text](https://streamable.com/4rcu6m)
+### Vídeo demonstrativo a baixo
 
+https://streamable.com/4rcu6m
 
 Pode acompanhar o projeto e inclusive contribuir para o mesmo!
 
