@@ -5,7 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Spiral Webchat</title>
-
+        <link rel="shortcut icon" href="https://www.flaticon.com/svg/static/icons/svg/137/137099.svg">
+    
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -23,14 +24,14 @@
     <body class="antialiased">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
             @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block text-white">
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="text-sm text-white underline">Dashboard</a>
+                        <a href="{{ url('/dashboard') }}" class="text-sm text-white" style="color: white">Dashboard</a>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm text-white underline">Login</a>
+                        <a href="{{ route('login') }}" class="text-sm text-white" style="color: white">Login</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-white underline">Registrar</a>
+                            <a href="{{ route('register') }}" class="ml-4 text-sm text-white" style="color: white">Registrar</a>
                         @endif
                     @endif
                 </div>
