@@ -31,10 +31,15 @@ Pode acompanhar o projeto e inclusive contribuir para o mesmo!
 5 - dentro do arquivo .env localizar a conexão mysql e conectar com suas informações locais
 
 6 - ainda dentro do arquivo .env adicionar nas configurações do pusher: 
+
 PUSHER_APP_ID=myId
+
 PUSHER_APP_KEY=myKey
+
 PUSHER_APP_SECRET=mySecrect
+
 PUSHER_APP_CLUSTER=mt1
+
 
 7 - rodar o php artisan migrate
 
