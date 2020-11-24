@@ -18,6 +18,18 @@ https://streamable.com/mo4nq5
 
 Pode acompanhar o projeto e inclusive contribuir para o mesmo!
 
+## Pre-Requisistos
+
+PHP versão >= 7.4;
+
+Laravel versão 8;
+
+Composer;
+
+NPM;
+
+MySQL 8;
+
 ## Como rodar o sistema?
 
 1 - rodar o composer install
