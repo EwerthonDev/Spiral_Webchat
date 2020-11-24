@@ -18,7 +18,7 @@ https://streamable.com/mo4nq5
 
 Pode acompanhar o projeto e inclusive contribuir para o mesmo!
 
-## Como rodar o sistema? (em breve)
+## Como rodar o sistema?
 
 1 - rodar o composer install
 
