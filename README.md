@@ -1,7 +1,7 @@
 # Bem Vindos Ao Spiral Webchat!
 
 
-<div style="text-align:center"><img src="https://www.flaticon.com/svg/static/icons/svg/137/137099.svg" height="400px" width="400px"/></div>
+<div style="text-align:center"><img src="https://cdn-icons.flaticon.com/png/512/3428/premium/3428739.png?token=exp=1649944110~hmac=a093563fe70d491287fb57daac2d8596" height="400px" width="400px"/></div>
 
 
 Este é um projeto voltado ao aprendizado, se trata de um webchat que será feito com: 
